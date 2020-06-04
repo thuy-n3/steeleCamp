@@ -11,11 +11,31 @@ var hardBtn = document.querySelector("#hardBtn");
 easyBtn.addEventListener("click", function(){
 	hardBtn.classList.remove("selected");
 	easyBtn.classList.add("selected");
+	//generate new color when click easy mode7 picked color & display new picked color 
+	colors = generateRandomColors(3);
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;	
+	//change color of top three square to match new picked colors & hide bottom three
+	for(var i = 0; i<squares.length; i++){
+		if(colors[i]){
+			squares[i].style.backgroundColor = colors[i];
+		} else {
+			squares[i].style.display = "none";
+		}
+	}
 });
 
 hardBtn.addEventListener("click", function(){
 	hardBtn.classList.add("selected");
 	easyBtn.classList.remove("selected");
+	//generate new color when click easy mode7 picked color & display new picked color 
+	colors = generateRandomColors(6);
+	pickedColor = pickColor();
+	colorDisplay.textContent = pickedColor;	
+	for(var i = 0; i<squares.length; i++){
+		squares[i].style.backgroundColor = colors[i];
+		squares[i].style.display = "block";
+	}
 });
 
 
